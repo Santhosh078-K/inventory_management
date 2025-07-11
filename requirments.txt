@@ -1,7 +1,7 @@
 streamlit
 pymongo
 pandas
-werkzeug
+werkzeug>=2.2.0 # Specify a recent version to ensure security module compatibility
 python-dotenv
 Pillow
 reportlab
