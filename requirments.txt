@@ -1,0 +1,7 @@
+streamlit
+pymongo
+pandas
+werkzeug
+python-dotenv
+Pillow
+reportlab
