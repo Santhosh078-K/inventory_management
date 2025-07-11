@@ -1,6 +1,6 @@
 import streamlit as st
 import uuid
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash # Changed back to werkzeug.security
 # Import MongoDB functions
 from db_operations import load_users, add_user, find_user_by_username
 
@@ -17,7 +17,7 @@ def login_page():
             # Use MongoDB function to find user
             user_data = find_user_by_username(username)
 
-            if user_data and check_password_hash(user_data['password'], password):
+            if user_data and check_password_hash(user_data['password'], password): # Changed to check_password_hash
                 st.session_state.logged_in = True
                 st.session_state.username = user_data['username']
                 st.session_state.role = user_data['role']
@@ -51,7 +51,8 @@ def register_page():
                 if find_user_by_username(username):
                     st.error('Username already exists. Please choose a different one.')
                 else:
-                    hashed_password = generate_password_hash(password)
+                    # Hash password using generate_password_hash
+                    hashed_password = generate_password_hash(password) # Changed to generate_password_hash
                     new_user = {
                         'username': username,
                         'password': hashed_password,
